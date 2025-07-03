@@ -9,6 +9,10 @@ app.use(cors());
 const PORT = process.env.PORT || 3000;
 const API_TOKEN = process.env.IUCN_TOKEN;
 
+app.get('/', (req, res) => {
+  res.send("✅ API IUCN corriendo");
+});
+
 app.get('/especie/:nombre', async (req, res) => {
   const nombre = req.params.nombre;
 
