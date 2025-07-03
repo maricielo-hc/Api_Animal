@@ -17,7 +17,7 @@ app.get('/especie/:nombre', async (req, res) => {
     const respuesta = await axios.get(url);
     res.json(respuesta.data);
   } catch (err) {
-    console.error(err);
+    console.error(err.response?.data || err.message);
     res.status(500).json({ error: "No se pudo obtener la información de la especie." });
   }
 });
