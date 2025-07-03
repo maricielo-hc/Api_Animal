@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/especie/:nombre', async (req, res) => {
-  const nombre = req.params.nombre;
+  const nombre = decodeURIComponent(req.params.nombre); // 👈 cambio aquí
 
   try {
     const url = `https://apiv3.iucnredlist.org/api/v3/species/${encodeURIComponent(nombre)}?token=${API_TOKEN}`;
@@ -29,4 +29,3 @@ app.get('/especie/:nombre', async (req, res) => {
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en http://localhost:${PORT}`);
 });
-
